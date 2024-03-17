@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="./studentData.css">
+    </head>
+    <body>
+        <div class="form"  action="/sendData" method="post">
+            <input type="text" class="course_id" placeholder="Course_Id">
+            <input type="text" class="task" placeholder="Task">
+            <input type="text" class="duedate" placeholder="DueDate">
+            <button type="button" class="btn">ADD DATA</button>
+        </div> 
+        <!-- table for the Student assignments -->
+        <div class="record">
+         <table class="studentRecord" border="1" >
+            <thead>
+                 <th>Course_Id</th>
+                 <th>Task</th>
+                 <th>DueDate</th>
+            </thead>
+            <tbody id="tbody_data">
+
+            </tbody>
+         </table>
+        </div>
+        <script>
+             var course_id=document.querySelector(".couse_id");
+             var task=document.querySelector(".task");
+             var duedate=document.querySelector(".duedate");
+             var button=document.querySelector("btn")
+
+             button.addEventListener("click",() => {
+                var obj= {
+                     course_id:course_id.value,
+                     task : task.value,
+                     duedate : duedate.value
+                };
+                
+                fatch("/taskdata",{
+
+                    method:"POST",
+                    headers:{
+                        "content-type" : "application/json"
+                    },
+                    body:JSON.stringify(obj)
+                });
+
+             })
+
+            fetch('http://localhost:3000/')
+            .then((res)=>res.json())
+            .then((data) => {
+                console.log('fetch data', data);
+                const tablebody = document.getElementById('tbody_data');
+                tablebody.innerHTML='';
+                data.forEach(student  => {
+                    const row = document.createElement('tr');
+                    row.innerHTML= `
+                    <td>${student.Course_Id}</td>
+                    <td>${student.task_Name}</td>
+                    <td>${student.DueDate}</td>`
+
+                    tablebody.appendChild(row);
+
+                })
+            })
+
+        </script>
+    </body>
+</html>

@@ -1,0 +1,49 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.form{ 
+    height: 50vh; 
+    width: 100wv;   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #6889FF, #C668FF); 
+}
+.form_input{
+  border: none ;
+  height: 20%;
+  width: 20%;
+  text-align: center;
+  border-radius: 20px;
+  border-right-width:20px ;
+  margin-right: 12px;
+}
+.form_btn{
+    border: none ;
+    height: 20%;
+    width: 20%;
+    text-align: center;
+    border-radius: 20px;
+    border-right-width:20px ;
+    margin-right: 12px;
+}
+
+.form_btn:hover{
+    text-decoration: solid;
+    font-style: oblique ;
+    background-color: brown;
+    cursor: pointer;
+}
+
+.record{
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    height: 50vh;
+    width: 100%;
+    background: linear-gradient(135deg, #6889FF, #C668FF);
+}
+.studentRecord{
+    gap: 20px;
+}
